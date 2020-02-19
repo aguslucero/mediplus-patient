@@ -115,4 +115,26 @@ router.post('/createPatient', (req,res,next) => {
 
 })
 
+router.post('/update', verifyToken, (req,res) => {
+    axios.post('http://localhost:3001/vr/api/patient/update/' + req.userId , { 'person': {
+        'firstName': req.body.user.name,
+        'lastName':  req.body.user.lastName,
+        'birthDate': req.body.user.birthDate,
+        'dni': req.body.user.dni,
+        'phone':  req.body.user.phone,
+        }      
+    })
+    .then(response => {
+        res.status(200).send({
+           user: response.data.user,
+           token: response.data.token
+         });
+         
+     })
+     .catch(error => {
+         res.send(error)
+    });
+
+})
+
 module.exports = router;

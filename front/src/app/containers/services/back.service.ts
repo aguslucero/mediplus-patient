@@ -51,6 +51,10 @@ export class BackService {
     });
   }
 
+  updatePatient( user: User) {
+    return this.httpClient.post('/pacientes/update', {user},
+    {headers: new HttpHeaders({'Authorization': localStorage.getItem('token') })});
+  }
 
 
 }
