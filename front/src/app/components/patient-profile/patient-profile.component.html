@@ -32,26 +32,6 @@
     </mat-form-field>
   </div>
   <div class="buttons">
-    <button mat-raised-button color="primary">Guardar informacion</button>
-  </div>
-</form>
-<br />
-<form class="password-form">
-  <div class="change-password">
-    <mat-form-field class="full-width">
-      <mat-label>Contraseña actual</mat-label>
-      <input type="password" matInput />
-    </mat-form-field>
-    <mat-form-field class="full-width">
-      <mat-label>Nueva contraseña</mat-label>
-      <input type="password" matInput />
-    </mat-form-field>
-    <mat-form-field class="full-width">
-      <mat-label>Repita la nueva contraseña</mat-label>
-      <input type="password" matInput />
-    </mat-form-field>
-  </div>
-  <div class="buttons">
-    <button mat-raised-button color="primary">Actualizar contraseña</button>
+    <button mat-raised-button color="primary" (click)='updatePatientData()'>Guardar informacion</button>
   </div>
 </form>
