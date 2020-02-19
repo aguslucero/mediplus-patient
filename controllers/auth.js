@@ -29,6 +29,35 @@ router.post('/login', (req,res) => {
       });
     });
 
+    router.post('/singIn', (req,res) => {
+        axios.post('http://localhost:3001/vr/api/auth/registerPatient',{ 
+              "person": { 
+                "firstName": req.body.user.firstName,
+                "lastName": req.body.user.lastName,
+                "birthDate": "",
+                "dni": "",
+                "phone": ""
+              },
+              "patient": {
+                    "email": req.body.user.email,
+                    "password": req.body.user.password
+              }
+            }
+            
+            
+          )
+          .then(response => {
+             res.status(200).send({
+                user: response.data.user,
+                token: response.data.token
+              });
+              
+          })
+          .catch(error => {
+              res.send(false)
+          });
+        });
+
     
 // middleware
         // function verifyToken(req, res, next) {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/containers/services/auth.service/auth.service';
 
 @Component({
   selector: 'app-sing-in',
@@ -8,7 +9,9 @@ import { Router } from '@angular/router';
 })
 export class SingInComponent implements OnInit {
 
-  constructor(public router: Router) { }
+  user = {email: '', password: '', firstName: '', lastName: ''};
+
+  constructor(public router: Router, private auth: AuthService) { }
 
   ngOnInit() {
 // validaciones del front-end
@@ -86,6 +89,19 @@ function hideValidate(input) {
 }
 
 // fin de validaciones del front-end
+}
+
+singIn() {
+  this.auth.singIn(this.user).subscribe(
+   data => {
+     console.log('respuesta', data);
+     localStorage.setItem('token', data.token);
+     if (data) {
+       this.router.navigate(['']);
+     }
+
+   });
+
 }
 
   }
