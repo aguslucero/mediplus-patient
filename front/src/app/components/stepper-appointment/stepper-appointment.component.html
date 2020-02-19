@@ -63,7 +63,7 @@
         <div class="form-patient-comment">
           <mat-form-field class="comment">
             <mat-label>Deja un comentario sobre el turno</mat-label>
-            <textarea matInput placeholder="Por ejemplo: Sensibilidad en las encias"></textarea>
+            <textarea matInput placeholder="Por ejemplo: Sensibilidad en las encias" [(ngModel)]="turn.observation" [ngModelOptions]="{ standalone: true }"></textarea>
           </mat-form-field>
         </div>
         <div class="buttons">
@@ -95,8 +95,8 @@
         </div>
         <div class="form-patient-comment">
           <mat-form-field class="comment">
-            <mat-label>Deja un comentario sobre el turno</mat-label>
-            <textarea matInput placeholder="Por ejemplo: Sensibilidad en las encias"></textarea>
+            <mat-label >Deja un comentario sobre el turno</mat-label>
+            <textarea matInput placeholder="Por ejemplo: Sensibilidad en las encias" [(ngModel)]="turn.observation" [ngModelOptions]="{ standalone: true }"></textarea>
           </mat-form-field>
         </div>
         <div class="buttons">

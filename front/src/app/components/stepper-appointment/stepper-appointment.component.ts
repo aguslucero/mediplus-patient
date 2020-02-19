@@ -121,7 +121,7 @@ getDay(date: string) {
 
 }
 requetsAppointment() {
-this.backService.requetsAppointmentLoged(this.data.doctor.id, this.turn.date, this.turn.hour).subscribe(
+this.backService.requetsAppointmentLoged(this.data.doctor.id, this.turn.date, this.turn.hour, this.turn.observation).subscribe(
   data => {
     console.log(data);
   },
@@ -133,7 +133,8 @@ this.backService.requetsAppointmentLoged(this.data.doctor.id, this.turn.date, th
   this.backService.createPatient(this.newUser).subscribe(
    res => {
       this.newUser.id = res.user._id;
-      this.backService.requetsAppointment(this.data.doctor.id, this.newUser.id, this.turn.date, this.turn.hour ).subscribe(
+      this.backService.requetsAppointment(this.data.doctor.id, this.newUser.id,
+              this.turn.date, this.turn.hour, this.turn.observation ).subscribe(
         result => {
           console.log(result);
         },
@@ -179,7 +180,8 @@ verifyLoginCode() {
 getCurrentUser() {
   this.auth.currentUser().subscribe(
     data => {
-      this.user = new User(data._id, data.person.firstName, data.person.lastName, data.person.phone, data.person.birthDate, data.person.dni);
+      this.user = new User(data._id, data.person.firstName, data.person.lastName,
+                           data.person.phone, data.person.birthDate, data.person.dni);
     },
   );
 }
@@ -203,4 +205,5 @@ export class Date {
 export class Turn {
   date: string;
   hour: string;
+  observation: string;
 }
