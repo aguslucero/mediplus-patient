@@ -67,6 +67,14 @@ export class Doctor {
     this._phone = value;
   }
 
+  private _profileUrl: string;
+  public get profileUrl(): string {
+    return this._profileUrl;
+  }
+  public set profileUrl(value: string) {
+    this._profileUrl = value;
+  }
+
   constructor(id: string, birthdate: string, dni: number, firstname: string, lastname: string, phone: number, speciality: string, prepaid: string[], rating: number) {
     this._id = id;
     this._birthdate = birthdate;

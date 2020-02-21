@@ -1,5 +1,5 @@
 <div class="doctor">
-  <div class="doctor-photo">
+  <div class="doctor-photo" [ngStyle]="{'background-image': 'url(' + doctor.profileUrl + ')'}">
   </div>
   <div class="doctor-info">
       <span>Dr. {{doctor.firstname + ' ' + doctor.lastname}} </span>

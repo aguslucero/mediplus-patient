@@ -74,7 +74,9 @@ export class PatientSelectSpecialistComponent implements OnInit {
         doc.prepaid.forEach(pp => {
           prepaid.push(pp.name);
         });
-        this.doctorsBySpecialist.push(new Doctor(doc._id, doc.person.birthDate, doc.person.dni, doc.person.firstName, doc.person.lastName, doc.person.phone, doc.speciality, prepaid , 3 ))
+        let doctorAux = new Doctor(doc._id, doc.person.birthDate, doc.person.dni, doc.person.firstName, doc.person.lastName, doc.person.phone, doc.speciality, prepaid , 3 );
+        doctorAux.profileUrl = doc.profileUrl;
+        this.doctorsBySpecialist.push(doctorAux);
       });
     this.doctorsBySpecialistCopy = this.doctorsBySpecialist;
     });

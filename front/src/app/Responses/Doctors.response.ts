@@ -15,6 +15,7 @@ export interface DoctorResponse {
   speciality: string;
   _id: string;
   prepaid: HealthCareResponse[];
+  profileUrl: string;
 }
 
 export interface HealthCareResponse {
