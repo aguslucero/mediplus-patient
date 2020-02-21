@@ -10,11 +10,18 @@ import { Store } from '@ngrx/store';
 })
 export class PatientHomePageComponent implements OnInit {
 
+  user: boolean;
+
   constructor(
     private patientViewStore: Store<fromPatientVIewState.State>
   ) { }
 
   ngOnInit() {
+    this.user = false;
+    if (localStorage.getItem('token') && localStorage.getItem('token') !== 'undefined') {
+    this.user = true;
+    }
+
   }
   goToAllAppointmentsHistory() {
     this.patientViewStore.dispatch(new PatientViewActions.AllAppointmentHistory);

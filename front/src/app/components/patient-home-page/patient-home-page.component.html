@@ -1,20 +1,32 @@
 <div class="home-page-container">
   <div class="buttons-container">
     <div class="home-button hvr-grow-shadow">
-      <span (click)="goToSelectSpecialist()" class="button-content"> 
+      <span (click)="goToSelectSpecialist()" class="button-content">
         <span class="button-title">Especialistas</span>
-        <span class="button-description">Buscar y agendar turnos</span> 
+        <span class="button-description">Buscar y agendar turnos</span>
       </span>
     </div>
-    <div class="home-button hvr-grow-shadow">
-      <span (click)="goToCalendar()"  class="button-content">         
+    <div class="home-button hvr-grow-shadow" *ngIf="user">
+      <span (click)="goToCalendar()"  class="button-content">
         <span class="button-title">Calendario</span>
-        <span class="button-description">Ver tus horarios</span> 
+        <span class="button-description">Ver tus horarios</span>
       </span>
     </div>
-    <div class="home-button hvr-grow-shadow">
+    <div class="home-button hvr-grow-shadow" *ngIf="!user" matTooltip="Necesita iniciar sesión para acceder" >
+      <span   class="button-content">
+        <span class="button-title"  >Calendario</span>
+        <span class="button-description">Ver tus horarios</span>
+      </span>
+    </div>
+    <div class="home-button hvr-grow-shadow" *ngIf="user">
         <span (click)="goToAllAppointmentsHistory()" class="button-content">
           <span class="button-title">Turnos</span>
+          <span class="button-description">Actuales y pasado</span>
+        </span>
+      </div>
+      <div class="home-button hvr-grow-shadow" *ngIf="!user" matTooltip="Necesita iniciar sesión para acceder">
+        <span  class="button-content">
+          <span class="button-title" >Turnos</span>
           <span class="button-description">Actuales y pasado</span>
         </span>
       </div>
