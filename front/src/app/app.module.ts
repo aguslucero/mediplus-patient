@@ -112,7 +112,8 @@ import { SuccessDialogComponent } from './components/success-dialog/success-dial
   entryComponents: [
     AppointmentRequestComponent,
     CommentComponent,
-    SuccessDialogComponent
+    SuccessDialogComponent,
+    StepperAppointmentComponent
   ],
 })
 export class AppModule { }

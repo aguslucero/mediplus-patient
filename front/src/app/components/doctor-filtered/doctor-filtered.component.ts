@@ -1,3 +1,4 @@
+import { StepperAppointmentComponent } from './../stepper-appointment/stepper-appointment.component';
 import { Component, OnInit, Input} from '@angular/core';
 import { Observable } from 'rxjs';
 import * as fromPatientVIewState from '../../containers/reducers/index';
@@ -25,11 +26,12 @@ export class DoctorFilteredComponent implements OnInit {
     this.showRequestComponent = false;
   }
   requestAppointment(): void {
-    const dialogRef = this.dialog.open(AppointmentRequestComponent, {
+    const dialogRef = this.dialog.open(StepperAppointmentComponent, {
       data: {
         doctor: this.doctor,
       }
     });
+    dialogRef.componentInstance.getNextAppointment();
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
