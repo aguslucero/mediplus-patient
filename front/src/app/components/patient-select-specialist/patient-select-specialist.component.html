@@ -1,7 +1,16 @@
+<div class=container>
+  <div class="mat-raised-button back-button" (click)="goToHome()">
+    Volver
+  </div>
+  
+  
+
+
+
 <form class="example-form">
   <h3 class="title">Seleccione una especialidad</h3>
   <mat-form-field class="selectEspecialist">
- <mat-label>Ejemplo Traumatologo</mat-label>
+ <mat-label>Especialidad</mat-label>
     <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto"  >
     <mat-autocomplete #auto="matAutocomplete" >
       <mat-option *ngFor="let specialist of filteredOptions | async" [value]="specialist" (click)="onSelectedSpecialist(specialist)">
@@ -10,7 +19,9 @@
     </mat-autocomplete>
   </mat-form-field>
 
+
 </form>
+
 <div class="d-flex justify-content-center mt-10" *ngIf="this.loader">
   <div class="spinner-border text-primary" role="status">
     <span class="sr-only">Buscando especialistas</span>
@@ -55,4 +66,5 @@
   <div *ngFor="let doctor of doctorsBySpecialistCopy" class="doctor-array">
     <app-doctor-filtered [doctor]="doctor"></app-doctor-filtered>
   </div>
+</div>
 </div>

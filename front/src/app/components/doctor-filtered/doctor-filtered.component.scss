@@ -3,12 +3,14 @@
   height: 100px;
   color: rgb(94, 134, 172);
   background-color: whitesmoke;
-  border-radius: 10px;
+  border-radius: 8px;
   text-align: center;
   padding: 0 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border: 1px solid #0000002e;
+  margin-top: 10px;
 }
 .doctor-photo{
 
@@ -28,3 +30,11 @@
   width: 200px;
 }
 
+.buttons{
+  width: 15%;
+
+}
+.button{
+  width: 100%;
+  margin-top: 3px;
+}

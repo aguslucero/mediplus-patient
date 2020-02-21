@@ -5,6 +5,7 @@ import { BackService } from 'src/app/containers/services/back.service';
 import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import { AppointmentResponse } from 'src/app/Responses/Appointments.response';
+import * as PatientViewActions from '../../containers/actions/patient-view-status.actions';
 
 @Component({
   selector: 'app-all-appointments-history',
@@ -30,6 +31,10 @@ export class AllAppointmentsHistoryComponent implements OnInit {
       });
     });
     console.log(this.allAppointmentslist);
+  }
+
+  goToHome = () => {
+    this.patientViewStore.dispatch(new PatientViewActions.Home);
   }
 
 }
