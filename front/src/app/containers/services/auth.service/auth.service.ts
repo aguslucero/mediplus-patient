@@ -17,4 +17,9 @@ currentUser(): Observable<any> {
   return this.httpClient.get('/pacientes/currentUser', {headers: new HttpHeaders({'Authorization': localStorage.getItem('token') })});
 
 }
+
+
+singIn( user: {email: string, password: string, firstName: string, lastName: string} ): Observable<any> {
+  return this.httpClient.post('/auth/singIn', { user });
+}
 }

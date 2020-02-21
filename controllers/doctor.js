@@ -42,7 +42,8 @@ router.post('/request-appointment', (req,res,next) => {
         doctor: req.body.doctor_id,
         patient: req.body.patient_id,
         date: req.body.date,
-        hour: req.body.hour
+        hour: req.body.hour,
+        observation: req.body.observation
     })
     .then((res) => {
         console.log(`statusCode: ${res.statusCode}`)
@@ -62,7 +63,8 @@ router.post('/request-appointment-logged', verifyToken,  (req,res,next) => {
         doctor: req.body.doctor_id,
         patient: req.userId,
         date: req.body.date,
-        hour: req.body.hour
+        hour: req.body.hour,
+        observation: req.body.observation
     })
     .then((res) => {
         console.log(`statusCode: ${res.statusCode}`)

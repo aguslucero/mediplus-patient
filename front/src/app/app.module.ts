@@ -43,6 +43,7 @@ import { PatientProfileComponent } from './components/patient-profile/patient-pr
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { CalendarAppointmentComponent } from './components/calendar-appointment/calendar-appointment.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { SuccessDialogComponent } from './components/success-dialog/success-dialog.component';
 
 
 
@@ -70,7 +71,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     PhoneAuthComponent,
     StepperAppointmentComponent,
     CalendarComponent,
-    CalendarAppointmentComponent
+    CalendarAppointmentComponent,
+    SuccessDialogComponent
 
   ],
   imports: [
@@ -109,7 +111,9 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
   ],
   entryComponents: [
     AppointmentRequestComponent,
-    CommentComponent
+    CommentComponent,
+    SuccessDialogComponent,
+    StepperAppointmentComponent
   ],
 })
 export class AppModule { }

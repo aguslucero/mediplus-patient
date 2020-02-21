@@ -432,7 +432,8 @@ a {
   background: url(../img/banner/home.jpg) no-repeat center ;
   position: relative;
   z-index: 1;
-  height: 780px;
+  min-height: 780px;
+  background-color: #222222;
 }
   @media (max-width: 992px) {
     .home_banner_area {

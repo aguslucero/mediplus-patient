@@ -28,6 +28,7 @@ export class PatientSelectSpecialistComponent implements OnInit {
   loader = false;
 
   healthCares: HealthCare[] = [];
+  speciality = '';
   starArray = [1,2,3,4,5];
   myControl = new FormControl();
   selectedOs = '';

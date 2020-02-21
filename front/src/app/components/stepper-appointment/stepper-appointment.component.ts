@@ -1,16 +1,18 @@
+import { Doctor } from 'src/app/Models/doctor';
+import { SuccessDialogComponent } from './../success-dialog/success-dialog.component';
 import { AuthService } from 'src/app/containers/services/auth.service/auth.service';
 import { Appointment } from './../../Models/appointment';
 import { BackService } from 'src/app/containers/services/back.service';
 import { AppointmentService } from './../../containers/services/appointment.service/appointment.service';
 import {Component, OnInit, Inject} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { AppointmentRequestComponent } from '../appointment-request/appointment-request.component';
 import * as moment from 'moment';
 import { PhoneNumber } from './../../Models/phone';
 import { WindowService } from './../../containers/services/window.service/window.service';
 import * as firebase from 'firebase';
 import { User } from 'src/app/Models/user';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 
 @Component({
@@ -38,6 +40,7 @@ export class StepperAppointmentComponent implements OnInit {
               private appointmentService: AppointmentService,
               private backService: BackService,
               public dialogRef: MatDialogRef<AppointmentRequestComponent>,
+              public dialog: MatDialog,
               private windowService: WindowService,
               private auth: AuthService,
              @Inject(MAT_DIALOG_DATA) public data: any) { }
@@ -121,9 +124,10 @@ getDay(date: string) {
 
 }
 requetsAppointment() {
-this.backService.requetsAppointmentLoged(this.data.doctor.id, this.turn.date, this.turn.hour).subscribe(
+this.backService.requetsAppointmentLoged(this.data.doctor.id, this.turn.date, this.turn.hour, this.turn.observation).subscribe(
   data => {
     console.log(data);
+    this.openDialog();
   },
   (err) => console.log(err)
 );
@@ -133,9 +137,11 @@ this.backService.requetsAppointmentLoged(this.data.doctor.id, this.turn.date, th
   this.backService.createPatient(this.newUser).subscribe(
    res => {
       this.newUser.id = res.user._id;
-      this.backService.requetsAppointment(this.data.doctor.id, this.newUser.id, this.turn.date, this.turn.hour ).subscribe(
+      this.backService.requetsAppointment(this.data.doctor.id, this.newUser.id,
+              this.turn.date, this.turn.hour, this.turn.observation ).subscribe(
         result => {
           console.log(result);
+          this.openDialog();
         },
         (err) => console.log(err)
       );
@@ -171,7 +177,6 @@ verifyLoginCode() {
                    } else {
                      this.requetsAppointmentAndCreateUser();
                     }
-
   })
   .catch( error => console.log(error, 'Incorrect code entered?'));
 }
@@ -179,7 +184,8 @@ verifyLoginCode() {
 getCurrentUser() {
   this.auth.currentUser().subscribe(
     data => {
-      this.user = new User(data._id, data.person.firstName, data.person.lastName, data.person.phone, data.person.birthDate, data.person.dni);
+      this.user = new User(data._id, data.person.firstName, data.person.lastName,
+                           data.person.phone, data.person.birthDate, data.person.dni);
     },
   );
 }
@@ -190,6 +196,14 @@ selectTurn( date: string, hour: string ) {
 
 }
 
+openDialog(): void {
+
+  const dialogRef = this.dialog.open(SuccessDialogComponent, {
+    width: '300px',
+    panelClass: 'custom-modalbox',
+    data: {turn: this.turn , dialog: this.dialogRef}
+   });
+}
 
 
 }
@@ -203,4 +217,5 @@ export class Date {
 export class Turn {
   date: string;
   hour: string;
+  observation: string;
 }

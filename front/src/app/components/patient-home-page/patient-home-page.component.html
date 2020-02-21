@@ -1,14 +1,22 @@
 <div class="home-page-container">
-  <h1>Bienvenido de nuevo, Agustin</h1>
   <div class="buttons-container">
-    <div class="home-button">
-      <span (click)="goToSelectSpecialist()" class="button-content"> Buscar especialistas </span>
+    <div class="home-button hvr-grow-shadow">
+      <span (click)="goToSelectSpecialist()" class="button-content"> 
+        <span class="button-title">Especialistas</span>
+        <span class="button-description">Buscar y agendar turnos</span> 
+      </span>
     </div>
-    <div class="home-button">
-      <span (click)="goToCalendar()"  class="button-content"> Mi calendario </span>
+    <div class="home-button hvr-grow-shadow">
+      <span (click)="goToCalendar()"  class="button-content">         
+        <span class="button-title">Calendario</span>
+        <span class="button-description">Ver tus horarios</span> 
+      </span>
     </div>
-    <div class="home-button">
-        <span (click)="goToAllAppointmentsHistory()" class="button-content"> Historial de turnos </span>
+    <div class="home-button hvr-grow-shadow">
+        <span (click)="goToAllAppointmentsHistory()" class="button-content">
+          <span class="button-title">Turnos</span>
+          <span class="button-description">Actuales y pasado</span>
+        </span>
       </div>
   </div>
 <div>

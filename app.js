@@ -12,8 +12,6 @@ const app = express();
 //Port
 const port = 3002;
 
-// Connect mongoose to our database
-mongoose.connect(config.database);
 
 //midleware que permite cors
 app.use(cors());
