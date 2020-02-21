@@ -4,7 +4,7 @@
 
 <span class="appointment-history-header">Sus proximos turnos</span>
 <div class="history">
-  <div *ngFor="let appointment of sorted">
+  <div *ngFor="let appointment of allAppointmentslist">
     <app-calendar-appointment [appointment]="appointment"></app-calendar-appointment>
   </div>
 </div>
