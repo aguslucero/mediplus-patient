@@ -43,6 +43,7 @@ export class PatientSelectSpecialistComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getAllHealthCares();
     this.filteredOptions = this.myControl.valueChanges
       .pipe(
         startWith(''),
