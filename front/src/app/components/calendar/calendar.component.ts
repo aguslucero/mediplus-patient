@@ -25,24 +25,20 @@ export class CalendarComponent implements OnInit {
  ) { }
 
   ngOnInit() {
-    console.log('la fecha de hoy es:' + this.today);
+
     this.allAppointmentslist = [];
     this.loader = true;
     this.backService.getAllAppointmentsFromPatient().subscribe((appointment) => {
       this.loader = false;
       appointment.forEach((appoint: AppointmentResponse) => {
         const appointDate = moment(appoint.date, 'DD-MM-YYYY').format('DD-MM-YYYY');
-        console.log('la fecha del turno es:' + appointDate);
+
         if (this.today <= appointDate) {
           // tslint:disable-next-line: max-line-length
           this.allAppointmentslist.push(new Appointment(appoint._id, appoint.doctor.person.firstName, appoint.doctor.person.lastName, appoint.doctor.speciality, appoint.date, appoint.hour));
-        } else {
-          console.log('este turno ya paso');
         }
         });
     });
-    console.log(this.allAppointmentslist);
-    // tslint:disable-next-line: max-line-length
   }
 
   goToHome = () => {
