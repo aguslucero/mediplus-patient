@@ -6,7 +6,6 @@ import { Store } from '@ngrx/store';
 import { AppointmentResponse } from 'src/app/Responses/Appointments.response';
 import * as fromPatientVIewState from '../../containers/reducers/index';
 import * as PatientViewActions from '../../containers/actions/patient-view-status.actions';
-import { app } from 'firebase';
 import * as moment from 'moment';
 
 @Component({
