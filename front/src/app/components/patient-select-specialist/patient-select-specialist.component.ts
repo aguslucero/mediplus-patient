@@ -37,7 +37,7 @@ export class PatientSelectSpecialistComponent implements OnInit {
 
   filteredOptions: Observable<string[]>;
 
-  specialistArray = ['Traumatologo', 'Cirujano', 'Pediatra', 'Kinesiologo'];
+  specialistArray = ['Traumatologo', 'Cirujano', 'Pediatra', 'Kinesiologo', 'Nutricionista', 'Psicologo', 'Clinico', 'Oftalmologo', 'Oncologo', 'Reumatologo'];
   constructor( private backService: BackService,
      private patientViewStore: Store<fromPatientVIewState.State>
   ) { }
