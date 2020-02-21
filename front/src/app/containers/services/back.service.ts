@@ -54,5 +54,8 @@ export class BackService {
     {headers: new HttpHeaders({'Authorization': localStorage.getItem('token') })});
   }
 
+  getHealthCares( ): Observable<any> {
+    return this.httpClient.get('healthcare/allPrepaids', {headers: new HttpHeaders({'Authorization': localStorage.getItem('token') })} );
+  }
 
 }

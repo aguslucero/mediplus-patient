@@ -10,6 +10,7 @@ import { Doctor } from 'src/app/Models/doctor';
 import { DoctorResponse } from 'src/app/Responses/Doctors.response';
 import { FormControl } from '@angular/forms';
 import {map, startWith} from 'rxjs/operators';
+import { HealthCare } from 'src/app/Models/healthCare';
 
 
 
@@ -26,7 +27,7 @@ export class PatientSelectSpecialistComponent implements OnInit {
   doctorsBySpecialistCopy: Doctor[] = [];
   loader = false;
 
-  obra_social = ['IOMA', 'OSDE', 'SWISS MEDICAL'];
+  healthCares: HealthCare[] = [];
   starArray = [1,2,3,4,5];
   myControl = new FormControl();
   selectedOs = '';
@@ -75,6 +76,13 @@ export class PatientSelectSpecialistComponent implements OnInit {
     this.specialistSelected = specialistName;
   }
 
+  getAllHealthCares() {
+    this.backService.getHealthCares().subscribe((healthCare) => {
+      healthCare.forEach((healt) => {
+        this.healthCares.push(new HealthCare(healt._id, healt.name));
+      });
+    });
+  }
 
   starArrayBuilder(n: number) {
     return new Array(n);

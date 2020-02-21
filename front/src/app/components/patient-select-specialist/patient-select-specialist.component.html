@@ -37,8 +37,8 @@
         <mat-form-field>
           <mat-label>Obra social</mat-label>
           <mat-select [(value)]="selectedOs">
-            <mat-option *ngFor="let os of obra_social" [value]="os">
-              {{os}}
+            <mat-option *ngFor="let healthCare of healthCares" [value]="healthCare">
+              {{healthCare.name}}
             </mat-option>
           </mat-select>
         </mat-form-field>
