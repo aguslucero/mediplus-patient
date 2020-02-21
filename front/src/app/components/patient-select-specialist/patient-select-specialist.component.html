@@ -2,8 +2,8 @@
   <div class="mat-raised-button back-button" (click)="goToHome()">
     Volver
   </div>
-  
-  
+
+
 
 
 
@@ -36,7 +36,7 @@
         <mat-form-field>
           <mat-label>Obra social</mat-label>
           <mat-select [(value)]="selectedOs">
-            <mat-option *ngFor="let healthCare of healthCares" [value]="healthCare">
+            <mat-option *ngFor="let healthCare of healthCares" [value]="healthCare.name">
               {{healthCare.name}}
             </mat-option>
           </mat-select>

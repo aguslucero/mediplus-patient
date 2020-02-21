@@ -70,7 +70,11 @@ export class PatientSelectSpecialistComponent implements OnInit {
     this.backService.getBySpeciality(specialistName).subscribe((doctors) => {
       this.loader = false;
       doctors.forEach((doc: DoctorResponse) => {
-        this.doctorsBySpecialist.push(new Doctor(doc._id, doc.person.birthDate, doc.person.dni, doc.person.firstName, doc.person.lastName, doc.person.phone, doc.speciality, doc.prepaid , 3 ))
+        const prepaid: string[] = [];
+        doc.prepaid.forEach(pp => {
+          prepaid.push(pp.name);
+        });
+        this.doctorsBySpecialist.push(new Doctor(doc._id, doc.person.birthDate, doc.person.dni, doc.person.firstName, doc.person.lastName, doc.person.phone, doc.speciality, prepaid , 3 ))
       });
     this.doctorsBySpecialistCopy = this.doctorsBySpecialist;
     });
@@ -91,6 +95,7 @@ export class PatientSelectSpecialistComponent implements OnInit {
   }
 
   applyFilters = () => {
+    console.log(this.selectedOs);
 
     this.filterApplied = true;
 
